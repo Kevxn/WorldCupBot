@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const creds = require('./creds.json');
+// const creds = require('./creds.json');
 const r = require('request');
 const flags = require('./flag_dict.json');
 
