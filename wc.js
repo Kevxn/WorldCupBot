@@ -10,7 +10,6 @@ async function search_player(target, message){
 
 	r(url, {json: true}, (err, res, body) => {
 
-		console.log(body.Data);
 		let players = body.Data.Value.playerList;
 
 		if (err){ 
