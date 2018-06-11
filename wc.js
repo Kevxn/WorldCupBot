@@ -22,17 +22,22 @@ async function search_player(target, message){
 				if (player.PlayerFullName == target){
 
 					let player_embed = new Discord.RichEmbed();
+					let nextMatch = player.UpComingMatchesList[0];
+					let oppCtryShort = nextMatch.VsCountryCode;
+					let plrCtryShort = player.teamShortCode;
+
+					let plrFlag = flags[plrCtryShort];
+					let oppFlag = flags[oppCtryShort];
+					
 					player_embed.setTitle(`${player.PlayerDisplayName}`);
 					player_embed.setColor('0x990001');
 					player_embed.setFooter('fantasy.fifa.com', 'https://api.fifa.com/api/v1/picture/tournaments-sq-4/254645_w');
-					player_embed.addField('Stats', `Goals: ${player.goalScored}` + '\n' + `Assists: ${player.goalAssist}` + '\n' + `Poistion: ${player.skillDesc}` + '\n' + `Country: ${player.TeamName}` + '\n' + `Selected By: ${player.SelectedPercentage}%` + '\n' + `Value: €${player.value}M`);
+					player_embed.addField('Stats', `Goals: ${player.goalScored}` + '\n' + `Assists: ${player.goalAssist}` + '\n' + `Poistion: ${player.skillDesc}` + '\n' + `Country: ${plrFlag} (${player.TeamName})` + '\n' + `Selected By: ${player.SelectedPercentage}%` + '\n' + `Value: €${player.value}M`);
 
-					let nextMatch = player.UpComingMatchesList[0];
-					let ctry_short = nextMatch.VsCountryCode;
-					let flag = flags[ctry_short];
+					
 
 					player_embed.addBlankField();
-					player_embed.addField(`\nNext Game: ${flag} (${ctry_short})`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
+					player_embed.addField(`\nNext Game: ${oppFlag} (${oppCtryShort})`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
 					player_embed.setThumbnail("https://www.fifa.com/assets/img/tournaments/common/player-placeholder--sqr.jpg");
 					message.channel.send(player_embed);
 				}
