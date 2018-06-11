@@ -11,6 +11,9 @@
     "test": "node wc.js",
     "start": "node wc.js"
   },
+  "dependencies": {
+    "discord.js": "11.2.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kevxn/WorldCupBot.git"
