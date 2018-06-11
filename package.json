@@ -1,0 +1,24 @@
+{
+  "name": "worldcupbot",
+  "version": "1.0.0",
+  "description": "Fantasy WC Discord Bot",
+  "main": "wc.js",
+  "engines": {
+    "node": "8.9.1",
+    "npm": "*"
+  },
+  "scripts": {
+    "test": "node wc.js",
+    "start": "node wc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kevxn/WorldCupBot.git"
+  },
+  "author": "me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kevxn/WorldCupBot/issues"
+  },
+  "homepage": "https://github.com/Kevxn/WorldCupBot#readme"
+}
