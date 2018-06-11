@@ -58,4 +58,4 @@ client.on('message', (message) => {
 });
 
 
-client.login(creds.discord_token);
+client.login(process.env.BOT_TOKEN);
