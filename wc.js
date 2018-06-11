@@ -40,7 +40,7 @@ client.on('ready', () => {
 client.on('message', (message) => {
 	if (message.content.startsWith('>>wc')){
 		target = message.content.replace('>>wc ', '');
-		search_player(target, message);
+		search_player(target.toUpperCase(), message);
 	}
 });
 
