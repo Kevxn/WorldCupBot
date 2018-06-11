@@ -31,6 +31,7 @@ async function search_player(target, message){
 					let ctry_short = nextMatch.VsCountryCode;
 					let flag = flags[ctry_short];
 
+					player_embed.addBlankField();
 					player_embed.addField(`\nNext Game: ${flag} (${ctry_short})`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
 					player_embed.setThumbnail("https://www.fifa.com/assets/img/tournaments/common/player-placeholder--sqr.jpg");
 					message.channel.send(player_embed);
