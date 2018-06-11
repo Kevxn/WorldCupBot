@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const creds = require('./creds.json');
 const r = require('request');
+const flags = require('./flag_dict.json');
 
 let url = "https://fantasy.fifa.com/services/api/feed/players?gamedayId=1&optType=1&language=en&buster=default";
 
@@ -24,8 +25,13 @@ async function search_player(target, message){
 					player_embed.setTitle(`${player.PlayerDisplayName}`);
 					player_embed.setColor('0x990001');
 					player_embed.setFooter('fantasy.fifa.com', 'https://api.fifa.com/api/v1/picture/tournaments-sq-4/254645_w');
-					player_embed.addField('\u200B', `Goals: ${player.goalScored}` + '\n' + `Assists: ${player.goalAssist}` + '\n' + `Poistion: ${player.skillDesc}` + '\n' + `Country: ${player.TeamName}` + '\n' + `Selected By: ${player.SelectedPercentage}%` + '\n' + `Value: €${player.value}M`);
-					player_embed.addField(`Next Game: ${player.UpComingMatchesList[0].VsCountryCode}`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
+					player_embed.addField('Stats', `Goals: ${player.goalScored}` + '\n' + `Assists: ${player.goalAssist}` + '\n' + `Poistion: ${player.skillDesc}` + '\n' + `Country: ${player.TeamName}` + '\n' + `Selected By: ${player.SelectedPercentage}%` + '\n' + `Value: €${player.value}M`);
+
+					let nextMatch = player.UpComingMatchesList[0];
+					let ctry_short = nextMatch.VsCountryCode;
+					let flag = flags[ctry_short];
+
+					player_embed.addField(`\nNext Game: ${flag} (${ctry_short})`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
 					player_embed.setThumbnail("https://www.fifa.com/assets/img/tournaments/common/player-placeholder--sqr.jpg");
 					message.channel.send(player_embed);
 				}
