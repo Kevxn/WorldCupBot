@@ -20,6 +20,7 @@ async function search_player(target, message){
 			players.forEach( function(player) {
 				if (player.PlayerFullName == target){
 					try{
+
 						let player_embed = new Discord.RichEmbed();
 						let nextMatch = player.UpComingMatchesList[0];
 						let oppCtryShort = nextMatch.VsCountryCode;
@@ -32,14 +33,13 @@ async function search_player(target, message){
 						player_embed.setColor('0x990001');
 						player_embed.setFooter('fantasy.fifa.com', 'https://api.fifa.com/api/v1/picture/tournaments-sq-4/254645_w');
 						player_embed.addField('Stats', `Goals: ${player.goalScored}` + '\n' + `Assists: ${player.goalAssist}` + '\n' + `Position: ${player.skillDesc}` + '\n' + `Country: ${plrFlag} (${player.TeamName})` + '\n' + `Captained: ${player.PlayerCapCount} (${player.SelectedCapPer}%)` + '\n' + `Gameday Pts: ${player.CurrGamedayPoints}` + '\n' + `Selected By: ${player.SelectedPercentage}%` + '\n' + `Value: €${player.value}M`);
-
-						
-
 						player_embed.addBlankField();
 						player_embed.addField(`\nNext Game: ${oppFlag} (${oppCtryShort})`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
-						player_embed.setThumbnail("https://www.fifa.com/assets/img/tournaments/common/player-placeholder--sqr.jpg");
+						player_embed.setThumbnail(`https://fantasy.fifa.com/static-assets/headshots-test/${player.Id}.png`);
 						message.channel.send(player_embed);
+						// https://fantasy.fifa.com/static-assets/headshots-test/336435.png
 					}
+
 					catch(err){
 						console.log(err);
 						message.channel.send("Could not find player");
