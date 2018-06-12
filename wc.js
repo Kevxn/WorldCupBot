@@ -36,8 +36,8 @@ async function search_player(target, message){
 						player_embed.addBlankField();
 						player_embed.addField(`\nNext Game: ${oppFlag} (${oppCtryShort})`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
 						player_embed.setThumbnail(`https://fantasy.fifa.com/static-assets/headshots-test/${player.Id}.png`);
+						// thumbnail must be 400x300 ish, current size is 600x600. Need smaller thumbail.
 						message.channel.send(player_embed);
-						// https://fantasy.fifa.com/static-assets/headshots-test/336435.png
 					}
 
 					catch(err){
@@ -55,9 +55,9 @@ async function show_help(message){
 	let help = new Discord.RichEmbed();
 	help.setTitle("Fantasy WC Bot");
 	help.setColor("0x990001");
-	help.setFooter("fantasy.fifa.com");
-	help.addField("Type >> {full player name} to see details for a player.\nPlayer must be in 2018 World Cup.");
-	help.addField("For example, >> Cristiano Ronaldo or >> Neymar");
+	help.setFooter("fantasy.fifa.com", "https://api.fifa.com/api/v1/picture/tournaments-sq-4/254645_w");
+	help.addField("\u200B", "Type >> {full player name} to see details for a player.\nPlayer must be in 2018 World Cup.");
+	help.addField("\u200B" "For example, >> Cristiano Ronaldo or >> Neymar\n\nPlayer name must be spelled properly, unlike FantasyPL Bot (at the moment).");
 
 	message.channel.send(help);
 }
