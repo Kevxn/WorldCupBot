@@ -57,7 +57,7 @@ async function show_help(message){
 	help.setColor("0x990001");
 	help.setFooter("fantasy.fifa.com", "https://api.fifa.com/api/v1/picture/tournaments-sq-4/254645_w");
 	help.addField("\u200B", "Type >> {full player name} to see details for a player.\nPlayer must be in 2018 World Cup.");
-	help.addField("\u200B" "For example, >> Cristiano Ronaldo or >> Neymar\n\nPlayer name must be spelled properly, unlike FantasyPL Bot (at the moment).");
+	help.addField("\u200B", "For example, >> Cristiano Ronaldo or >> Neymar\n\nPlayer name must be spelled properly, unlike FantasyPL Bot (at the moment).");
 
 	message.channel.send(help);
 }
