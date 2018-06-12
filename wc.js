@@ -51,14 +51,28 @@ async function search_player(target, message){
 	});
 }
 
+async function show_help(message){
+	let help = new Discord.RichEmbed();
+	help.setTitle("Fantasy WC Bot");
+	help.setColor("0x990001");
+	help.setFooter("fantasy.fifa.com");
+	help.addField("Type >> {full player name} to see details for a player.\nPlayer must be in 2018 World Cup.");
+	help.addField("For example, >> Cristiano Ronaldo or >> Neymar");
+
+	message.channel.send(help);
+}
+
 client.on('ready', () => {
 	console.log(`${client.user.tag} running.`);
 });
 
 client.on('message', (message) => {
-	if (message.content.startsWith('>>wc')){
-		target = message.content.replace('>>wc ', '');
+	if (message.content.startsWith('>>')){
+		target = message.content.replace('>> ', '');
 		search_player(target.toUpperCase(), message);
+	}
+	else if (message.content.startsWith('>>help')){
+		show_help(message);
 	}
 });
 
