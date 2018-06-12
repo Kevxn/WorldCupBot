@@ -67,7 +67,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-	if (message.content.startsWith('>>')){
+	if (message.content.startsWith('>> ')){
 		target = message.content.replace('>> ', '');
 		search_player(target.toUpperCase(), message);
 	}
