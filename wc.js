@@ -64,6 +64,7 @@ async function show_help(message){
 
 client.on('ready', () => {
 	console.log(`${client.user.tag} running.`);
+	client.user.setPresence({ game: { name: '>>help' }});
 });
 
 client.on('message', (message) => {
