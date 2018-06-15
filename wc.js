@@ -35,8 +35,9 @@ async function search_player(target, message){
 						player_embed.addField('Stats', `Goals: ${player.goalScored}` + '\n' + `Assists: ${player.goalAssist}` + '\n' + `Position: ${player.skillDesc}` + '\n' + `Country: ${plrFlag} (${player.TeamName})` + '\n' + `Captained: ${player.PlayerCapCount} (${player.SelectedCapPer}%)` + '\n' + `Gameday Pts: ${player.CurrGamedayPoints}` + '\n' + `Selected By: ${player.SelectedPercentage}%` + '\n' + `Value: €${player.value}M`);
 						player_embed.addBlankField();
 						player_embed.addField(`\nNext Game: ${oppFlag} (${oppCtryShort})`, `\nKick-off: ${player.UpComingMatchesList[0].MatchDate}`, true);
-						player_embed.setThumbnail(`https://fantasy.fifa.com/static-assets/headshots-test/${player.Id}.png`);
+						player_embed.setThumbnail(`https://api.fifa.com/api/v1/picture/players/2018fwc/${player.Id}_sq-300`);
 						// thumbnail must be 400x300 ish, current size is 600x600. Need smaller thumbail.
+						// https://api.fifa.com/api/v1/picture/players/2018fwc/358883_sq-300
 						message.channel.send(player_embed);
 					}
 
